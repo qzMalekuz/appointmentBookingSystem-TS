@@ -36,7 +36,7 @@ model Service {
   createdAt         DateTime        @default(now())
 
   availability      Availability[]
-  appoinments       Appointment[]
+  appointments      Appointment[]
 }
 
 model Availability {
@@ -54,8 +54,8 @@ model Appointment {
   id                String          @id @default(uuid())
   userId            String
   user              User            @relation(fields: [userId], references: [id])
-  serviveId         String
-  service           Service         @relation(fields: [serviveId], references: [id])
+  serviceId         String
+  service           Service         @relation(fields: [serviceId], references: [id])
   date              DateTime
   startTime         String
   endTime           String
