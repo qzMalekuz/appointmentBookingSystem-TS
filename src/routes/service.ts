@@ -52,7 +52,7 @@ router.post('/:serviceId/availability', (req: Request, res: Response) => {
     try {
 
         const { serviceId } = req.params;
-
+        
 
 
 
