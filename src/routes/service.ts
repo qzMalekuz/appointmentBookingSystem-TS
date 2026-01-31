@@ -31,7 +31,7 @@ router.post('/', authMiddleware, async(req: Request, res: Response) => {
             }
         });
 
-        if (typeof durationMinutes !== 'number' || durationMinutes < 30 || durationMinutes > 120 || durationMinutes % 30 !== 0) {
+        if (durationMinutes < 30 || durationMinutes > 120 || durationMinutes % 30 !== 0) {
             return res.status(400).json({
                 error: "InvalidInput"
             });
@@ -52,7 +52,9 @@ router.post('/:serviceId/availability', (req: Request, res: Response) => {
     try {
 
         const { serviceId } = req.params;
-        
+
+
+
 
     } catch (err) {
         return res.status(500).json({

@@ -48,6 +48,8 @@ model Availability {
   endTime        String
 }
 
+// 5-8 , 4-6 -> error 
+
 model Appointment {
   id                String          @id @default(uuid())
   userId            String

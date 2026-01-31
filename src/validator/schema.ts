@@ -20,8 +20,8 @@ const CreateServiceSchema = z.object({
 
 const SetAvailabilitySchema = z.object({
     dayOfWeek: z.number().min(0).max(6),
-    startTime: z.string(),
-    endTime: z.string()
+    startTime: z.iso.time(),
+    endTime: z.iso.time()
 });
 
 export const schemas = {

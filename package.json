@@ -26,6 +26,6 @@
     "zod": "^4.3.6"
   },
   "scripts": {
-    "dev": "bun run index.ts"
+    "dev": "bun run src/index.ts"
   }
 }
