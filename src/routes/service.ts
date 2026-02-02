@@ -48,6 +48,8 @@ router.post('/', authMiddleware, async(req: Request, res: Response) => {
     }
 });
 
+// Service avaulability endpoint
+
 router.post('/:serviceId/availability', authMiddleware, async(req: Request, res: Response) => {
     try {
         if (req.user?.role !== "SERVICE_PROVIDER") {
