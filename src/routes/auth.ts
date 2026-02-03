@@ -41,8 +41,6 @@ router.post('/register', async(req: Request, res: Response) => {
     }
 });
 
-// login question endpoint
-
 router.post('/login', async(req: Request, res: Response) => {
         try{
         const validation = schemas.LoginSchema.safeParse(req.body);
