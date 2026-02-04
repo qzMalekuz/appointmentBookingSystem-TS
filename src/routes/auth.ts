@@ -9,6 +9,8 @@ const saltRounds = Number(process.env.SALT_ROUNDS) || 10;
 
 const router = Router();
 
+// register 
+
 router.post('/register', async(req: Request, res: Response) => {
     try{
         const validation = schemas.SignupSchema.safeParse(req.body);
