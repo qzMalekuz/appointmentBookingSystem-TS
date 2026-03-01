@@ -1,88 +1,85 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import type { ReactNode } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
     theme: Theme;
-    toggleTheme: (event: React.MouseEvent) => void;
+    toggleTheme: (e: React.MouseEvent) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(() => {
-        const saved = localStorage.getItem('theme');
-        if (saved === 'light' || saved === 'dark') return saved;
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') return stored;
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     });
 
-    const applyTheme = (newTheme: Theme) => {
-        const root = document.documentElement;
-        if (newTheme === 'dark') {
-            root.classList.add('dark');
-        } else {
-            root.classList.remove('dark');
-        }
-        localStorage.setItem('theme', newTheme);
-    };
+    const [overlay, setOverlay] = useState<{ x: number; y: number; newTheme: Theme } | null>(null);
 
     useEffect(() => {
-        applyTheme(theme);
+        const root = window.document.documentElement;
+        if (theme === 'dark') {
+            root.classList.add('dark');
+            root.style.colorScheme = 'dark';
+        } else {
+            root.classList.remove('dark');
+            root.style.colorScheme = 'light';
+        }
+        localStorage.setItem('theme', theme);
     }, [theme]);
 
-    const toggleTheme = async (event: React.MouseEvent) => {
+    const toggleTheme = (e: React.MouseEvent) => {
+        if (overlay) return; // Prevent spam clicking
+
+        const x = e.clientX;
+        const y = e.clientY;
         const newTheme = theme === 'light' ? 'dark' : 'light';
 
-        // Fallback for browsers that don't support View Transitions
-        if (!document.startViewTransition) {
-            setTheme(newTheme);
-            return;
-        }
-
-        // Get the click coordinates
-        const x = event.clientX;
-        const y = event.clientY;
-        const endRadius = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        );
-
-        const transition = document.startViewTransition(() => {
-            setTheme(newTheme);
-            applyTheme(newTheme);
-        });
-
-        transition.ready.then(() => {
-            const clipPath = [
-                `circle(0px at ${x}px ${y}px)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`,
-            ];
-
-            document.documentElement.animate(
-                {
-                    clipPath: newTheme === 'dark' ? clipPath : [...clipPath].reverse(),
-                },
-                {
-                    duration: 500,
-                    easing: 'ease-in-out',
-                    pseudoElement: newTheme === 'dark' ? '::view-transition-new(root)' : '::view-transition-old(root)',
-                }
-            );
-        });
+        setOverlay({ x, y, newTheme });
     };
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
+            <AnimatePresence>
+                {overlay && (
+                    <motion.div
+                        initial={{
+                            clipPath: `circle(0px at ${overlay.x}px ${overlay.y}px)`,
+                            opacity: 1
+                        }}
+                        animate={{
+                            clipPath: `circle(150% at ${overlay.x}px ${overlay.y}px)`,
+                            opacity: 1
+                        }}
+                        exit={{
+                            opacity: 0,
+                            transition: { duration: 0.3, ease: 'easeOut' }
+                        }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        onAnimationComplete={() => {
+                            setTheme(overlay.newTheme);
+                            setOverlay(null);
+                        }}
+                        style={{
+                            position: 'fixed',
+                            inset: 0,
+                            backgroundColor: overlay.newTheme === 'dark' ? '#121212' : '#F5F5F5',
+                            zIndex: 99999,
+                            pointerEvents: 'none',
+                        }}
+                    />
+                )}
+            </AnimatePresence>
         </ThemeContext.Provider>
     );
 };
 
 export const useTheme = () => {
     const context = useContext(ThemeContext);
-    if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
+    if (!context) throw new Error('useTheme must be used within ThemeProvider');
     return context;
 };

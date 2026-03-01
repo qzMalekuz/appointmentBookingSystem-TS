@@ -31,21 +31,21 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-background text-text-main transition-colors duration-0 p-4">
             <div className="w-full max-w-md">
                 <div className="flex flex-col items-center mb-8">
-                    <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
                         <Calendar className="w-7 h-7 text-white" />
                     </div>
-                    <h1 className="text-2xl font-semibold text-slate-900">Create Account</h1>
-                    <p className="text-slate-500 mt-2">Join AppointmentLelo.io to get started</p>
+                    <h1 className="text-2xl font-semibold text-text-main">Create Account</h1>
+                    <p className="text-text-muted mt-2">Join AppointmentLelo.io to get started</p>
                 </div>
 
                 <Card>
                     <CardBody>
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                             {error && (
-                                <div className="p-3 bg-red-50 text-red-600 rounded-lg text-sm border border-red-100">
+                                <div className="p-3 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 rounded-lg text-sm border border-red-100 dark:border-red-500/20">
                                     {error}
                                 </div>
                             )}
@@ -78,9 +78,9 @@ const Register = () => {
                             />
 
                             <div className="flex flex-col gap-1.5 w-full">
-                                <label className="text-sm font-medium text-slate-700">Account Type</label>
+                                <label className="text-sm font-medium text-text-main">Account Type</label>
                                 <select
-                                    className="px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all text-sm"
+                                    className="px-3 py-2 bg-surface text-text-main border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
                                     value={role}
                                     onChange={(e) => setRole(e.target.value as any)}
                                 >
@@ -96,9 +96,9 @@ const Register = () => {
                     </CardBody>
                 </Card>
 
-                <p className="text-center mt-6 text-slate-600 text-sm">
+                <p className="text-center mt-6 text-text-muted text-sm">
                     Already have an account?{' '}
-                    <Link to="/login" className="text-slate-900 font-semibold hover:underline">
+                    <Link to="/login" className="text-text-main font-semibold hover:underline">
                         Sign in
                     </Link>
                 </p>

@@ -1,6 +1,6 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Calendar, LogOut, User, Moon, Sun } from 'lucide-react';
+import { Calendar, LogOut, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import Button from './Button';
 
@@ -27,12 +27,12 @@ const Layout = () => {
     const rootPath = role === 'USER' ? '/dashboard' : '/provider/dashboard';
 
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
-            <nav className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="min-h-screen flex flex-col bg-background text-text-main transition-colors duration-0">
+            <nav className="bg-surface border-b border-border-subtle sticky top-0 z-10 transition-colors duration-0">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <Link to={rootPath} className="flex items-center gap-2 text-slate-900 font-semibold text-lg">
-                        <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
-                            <Calendar className="w-5 h-5 text-white" />
+                    <Link to={rootPath} className="flex items-center gap-2 text-text-main font-semibold text-lg hover:opacity-80 transition-opacity">
+                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <Calendar className="w-5 h-5 text-surface" />
                         </div>
                         AppointmentLelo.io
                     </Link>
@@ -43,18 +43,18 @@ const Layout = () => {
                                 <Link
                                     key={link.path}
                                     to={link.path}
-                                    className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+                                    className="text-sm font-medium text-text-muted hover:text-text-main transition-colors"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="w-px h-6 bg-gray-200"></div>
+                        <div className="w-px h-6 bg-border-subtle"></div>
 
                         <button
                             onClick={toggleTheme}
-                            className="p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 rounded-full transition-colors"
+                            className="p-2 text-text-muted hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
                         >
                             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                         </button>

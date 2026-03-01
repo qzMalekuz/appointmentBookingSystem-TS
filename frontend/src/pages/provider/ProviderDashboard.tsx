@@ -68,10 +68,10 @@ const ProviderDashboard = () => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Create Service Section */}
-            <div className="lg:col-span-1 border-r-0 lg:border-r border-gray-200 lg:pr-8">
+            <div className="lg:col-span-1 border-r-0 lg:border-r border-border-subtle lg:pr-8">
                 <div className="mb-6">
-                    <h1 className="text-2xl font-bold text-slate-900">Create Service</h1>
-                    <p className="text-slate-500 mt-1">Add a new service to your catalog</p>
+                    <h1 className="text-2xl font-bold text-text-main">Create Service</h1>
+                    <p className="text-text-muted mt-1">Add a new service to your catalog</p>
                 </div>
 
                 <Card>
@@ -90,9 +90,9 @@ const ProviderDashboard = () => {
                             />
 
                             <div className="flex flex-col gap-1.5 w-full">
-                                <label className="text-sm font-medium text-slate-700">Type</label>
+                                <label className="text-sm font-medium text-text-main">Type</label>
                                 <select
-                                    className="px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all text-sm"
+                                    className="px-3 py-2 bg-surface border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
                                     value={type}
                                     onChange={(e) => setType(e.target.value)}
                                 >
@@ -103,9 +103,9 @@ const ProviderDashboard = () => {
                             </div>
 
                             <div className="flex flex-col gap-1.5 w-full">
-                                <label className="text-sm font-medium text-slate-700">Duration (Minutes)</label>
+                                <label className="text-sm font-medium text-text-main">Duration (Minutes)</label>
                                 <select
-                                    className="px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all text-sm"
+                                    className="px-3 py-2 bg-surface border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
                                     value={duration}
                                     onChange={(e) => setDuration(e.target.value)}
                                 >
@@ -129,30 +129,30 @@ const ProviderDashboard = () => {
             <div className="lg:col-span-2">
                 <div className="mb-6 flex items-center justify-between">
                     <div>
-                        <h2 className="text-2xl font-bold text-slate-900">My Services</h2>
-                        <p className="text-slate-500 mt-1">Manage your services and availability</p>
+                        <h2 className="text-2xl font-bold text-text-main">My Services</h2>
+                        <p className="text-text-muted mt-1">Manage your services and availability</p>
                     </div>
                 </div>
 
                 {loading ? (
                     <div className="flex justify-center p-12">
-                        <div className="w-8 h-8 rounded-full border-4 border-slate-200 border-t-slate-900 animate-spin"></div>
+                        <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
                     </div>
                 ) : services.length === 0 ? (
-                    <div className="text-center p-12 bg-white rounded-xl border border-gray-200 border-dashed">
-                        <Settings2 className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                        <h3 className="text-lg font-medium text-slate-900">No Services Found</h3>
-                        <p className="text-slate-500 mt-1 text-sm">Create a service to start accepting bookings.</p>
+                    <div className="text-center p-12 bg-surface rounded-xl border border-border-subtle border-dashed">
+                        <Settings2 className="w-12 h-12 text-primary opacity-50 mx-auto mb-4" />
+                        <h3 className="text-lg font-medium text-text-main">No Services Found</h3>
+                        <p className="text-text-muted mt-1 text-sm">Create a service to start accepting bookings.</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {services.map(service => (
                             <Card key={service.serviceId} className="hover:shadow-sm transition-shadow">
                                 <CardBody>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-4">{service.serviceName}</h3>
+                                    <h3 className="text-lg font-bold text-text-main mb-4">{service.serviceName}</h3>
                                     <Link
                                         to={`/provider/services/${service.serviceId}/availability`}
-                                        className="w-full text-center py-2 px-4 bg-white border border-gray-200 text-slate-700 font-medium rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2 transition-colors"
+                                        className="w-full text-center py-2 px-4 bg-surface border border-border-subtle text-text-main font-medium rounded-lg hover:bg-background flex items-center justify-center gap-2 transition-colors"
                                     >
                                         <Clock className="w-4 h-4" />
                                         Set Availability

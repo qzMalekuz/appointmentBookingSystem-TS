@@ -35,27 +35,27 @@ const MyAppointments = () => {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-bold text-slate-900">My Appointments</h1>
-                <p className="text-slate-500 mt-1">Manage all your booked services</p>
+                <h1 className="text-2xl font-bold text-text-main">My Appointments</h1>
+                <p className="text-text-muted mt-1">Manage all your booked services</p>
             </div>
 
             {error ? (
                 <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100">{error}</div>
             ) : loading ? (
                 <div className="flex justify-center p-12">
-                    <div className="w-8 h-8 rounded-full border-4 border-slate-200 border-t-slate-900 animate-spin"></div>
+                    <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
                 </div>
             ) : appointments.length === 0 ? (
-                <div className="text-center p-16 bg-white rounded-xl border border-gray-200 border-dashed">
-                    <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-900">No Appointments Yet</h3>
-                    <p className="text-slate-500 mt-1">Go to the dashboard to book a service.</p>
+                <div className="text-center p-16 bg-surface rounded-xl border border-border-subtle border-dashed">
+                    <Calendar className="w-12 h-12 text-primary opacity-50 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-text-main">No Appointments Yet</h3>
+                    <p className="text-text-muted mt-1">Go to the dashboard to book a service.</p>
                 </div>
             ) : (
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-surface rounded-xl shadow-sm border border-border-subtle overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left text-sm whitespace-nowrap">
-                            <thead className="bg-gray-50/50 text-slate-500 font-medium border-b border-gray-100 text-xs uppercase tracking-wider">
+                            <thead className="bg-background/50 text-text-muted font-medium border-b border-border-subtle text-xs uppercase tracking-wider">
                                 <tr>
                                     <th className="px-6 py-4">Service</th>
                                     <th className="px-6 py-4">Date</th>
@@ -63,22 +63,22 @@ const MyAppointments = () => {
                                     <th className="px-6 py-4">Status</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-border-subtle">
                                 {appointments.map((appt, idx) => (
-                                    <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                                    <tr key={idx} className="hover:bg-background/50 transition-colors">
                                         <td className="px-6 py-4">
-                                            <div className="font-semibold text-slate-900">{appt.serviceName}</div>
-                                            <div className="text-slate-500 text-xs mt-0.5">{appt.type}</div>
+                                            <div className="font-semibold text-text-main">{appt.serviceName}</div>
+                                            <div className="text-text-muted text-xs mt-0.5">{appt.type}</div>
                                         </td>
                                         <td className="px-6 py-4">
-                                            <div className="flex items-center gap-2 text-slate-700 font-medium">
-                                                <Calendar className="w-4 h-4 text-slate-400" />
+                                            <div className="flex items-center gap-2 text-text-main font-medium">
+                                                <Calendar className="w-4 h-4 opacity-50" />
                                                 {appt.date}
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-slate-600">
+                                        <td className="px-6 py-4 text-text-muted">
                                             <div className="flex items-center gap-2">
-                                                <Clock className="w-4 h-4 text-slate-400" />
+                                                <Clock className="w-4 h-4 opacity-50" />
                                                 {appt.startTime} - {appt.endTime}
                                             </div>
                                         </td>

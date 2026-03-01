@@ -1,31 +1,47 @@
 @import "tailwindcss";
 
-body {
-  @apply bg-gray-50 text-slate-800 font-sans antialiased transition-colors duration-0;
+@theme {
+  --color-background: var(--theme-bg);
+  --color-surface: var(--theme-surface);
+  --color-primary: var(--theme-button-bg);
+  --color-text-main: var(--theme-text-primary);
+  --color-text-muted: var(--theme-text-muted);
+  --color-border-subtle: var(--theme-border);
 }
 
-.dark body {
-  @apply bg-slate-900 text-slate-100;
-}
+@layer base {
+  :root {
+    --theme-bg: #F5F5F5;
+    --theme-surface: #FFFFFF;
+    --theme-border: #E5E5E5;
+    --theme-text-primary: #111111;
+    --theme-text-secondary: #525252;
+    --theme-text-muted: #737373;
+    --theme-button-bg: #111111;
+    --theme-button-text: #FFFFFF;
+  }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
+  .dark {
+    --theme-bg: #121212;
+    --theme-surface: #1E1E1E;
+    --theme-border: #2A2A2A;
+    --theme-text-primary: #FFFFFF;
+    --theme-text-secondary: #B5B5B5;
+    --theme-text-muted: #8A8A8A;
+    --theme-button-bg: #FFFFFF;
+    --theme-button-text: #111111;
+  }
 
-::view-transition-old(root) {
-  z-index: 1;
-}
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
+  }
 
-::view-transition-new(root) {
-  z-index: 2;
-}
-
-.dark::view-transition-old(root) {
-  z-index: 2;
-}
-
-.dark::view-transition-new(root) {
-  z-index: 1;
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
 }

@@ -34,9 +34,14 @@ router.post('/register', async (req: Request, res: Response) => {
         return res.status(201).json({
             message: `User created Successfully with id ${user.id}`
         });
-    } catch (err) {
+    } catch (err: any) {
+        if (err.code === 'P2002') {
+            return res.status(409).json({ error: "Email is already in use" });
+        }
+        console.error(err);
         return res.status(500).json({
-            error: "InternalServerError"
+            error: "InternalServerError",
+            details: String(err)
         });
     }
 });

@@ -41,14 +41,14 @@ const UserDashboard = () => {
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Available Services</h1>
-                    <p className="text-slate-500 text-sm mt-1">Book your next appointment</p>
+                    <h1 className="text-2xl font-bold text-text-main">Available Services</h1>
+                    <p className="text-text-muted text-sm mt-1">Book your next appointment</p>
                 </div>
 
                 <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="px-4 py-2 border border-gray-200 rounded-lg text-sm bg-white shadow-sm outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900"
+                    className="px-4 py-2 border border-border-subtle rounded-lg text-sm bg-surface shadow-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-text-main"
                 >
                     {SERVICE_TYPES.map(type => (
                         <option key={type} value={type}>{type}</option>
@@ -60,11 +60,11 @@ const UserDashboard = () => {
                 <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100">{error}</div>
             ) : loading ? (
                 <div className="flex justify-center p-12">
-                    <div className="w-8 h-8 rounded-full border-4 border-slate-200 border-t-slate-900 animate-spin"></div>
+                    <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
                 </div>
             ) : services.length === 0 ? (
-                <div className="text-center p-12 bg-white rounded-xl border border-gray-200 border-dashed">
-                    <p className="text-slate-500">No services found for this category.</p>
+                <div className="text-center p-12 bg-surface rounded-xl border border-border-subtle border-dashed">
+                    <p className="text-text-muted">No services found for this category.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,26 +72,26 @@ const UserDashboard = () => {
                         <Card key={service.id} className="hover:shadow-md transition-shadow">
                             <CardBody className="flex flex-col h-full">
                                 <div className="mb-4">
-                                    <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md mb-3">
+                                    <span className="inline-block px-2.5 py-1 bg-background text-text-muted text-xs font-semibold rounded-md mb-3">
                                         {service.type}
                                     </span>
-                                    <h3 className="text-lg font-bold text-slate-900 leading-tight mb-1">{service.name}</h3>
+                                    <h3 className="text-lg font-bold text-text-main leading-tight mb-1">{service.name}</h3>
                                 </div>
 
-                                <div className="space-y-2 mt-auto text-sm text-slate-600 mb-6">
+                                <div className="space-y-2 mt-auto text-sm text-text-muted mb-6">
                                     <div className="flex items-center gap-2">
-                                        <UserIcon className="w-4 h-4 text-slate-400" />
+                                        <UserIcon className="w-4 h-4 opacity-50" />
                                         <span>{service.providerName}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <Clock className="w-4 h-4 text-slate-400" />
+                                        <Clock className="w-4 h-4 opacity-50" />
                                         <span>{service.durationMinutes} minutes</span>
                                     </div>
                                 </div>
 
                                 <Link
                                     to={`/services/${service.id}`}
-                                    className="w-full text-center py-2 px-4 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                                    className="w-full text-center py-2 px-4 bg-primary text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                                 >
                                     View Slots
                                 </Link>
