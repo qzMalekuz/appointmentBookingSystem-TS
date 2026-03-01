@@ -5,8 +5,9 @@
   --color-surface: var(--theme-surface);
   --color-primary: var(--theme-button-bg);
   --color-text-main: var(--theme-text-primary);
-  --color-text-muted: var(--theme-text-muted);
+  --color-text-muted: var(--theme-text-secondary);
   --color-border-subtle: var(--theme-border);
+  --color-button-text: var(--theme-button-text);
 }
 
 @layer base {

@@ -35,10 +35,10 @@ const Register = () => {
             <div className="w-full max-w-md">
                 <div className="flex flex-col items-center mb-8">
                     <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
-                        <Calendar className="w-7 h-7 text-white" />
+                        <Calendar className="w-7 h-7 text-button-text" />
                     </div>
-                    <h1 className="text-2xl font-semibold text-text-main">Create Account</h1>
-                    <p className="text-text-muted mt-2">Join AppointmentLelo.io to get started</p>
+                    <h1 className="text-2xl font-semibold text-text-main text-center">Welcome to AppointmentLelo.io</h1>
+                    <p className="text-text-muted mt-2 text-center text-sm max-w-sm">Your one stop to book and track all your appointments</p>
                 </div>
 
                 <Card>
