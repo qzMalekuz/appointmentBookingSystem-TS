@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -18,6 +17,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     });
 
     const [overlay, setOverlay] = useState<{ x: number; y: number; newTheme: Theme } | null>(null);
+    const [animating, setAnimating] = useState(false);
+    const circleRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const root = window.document.documentElement;
@@ -31,8 +32,36 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         localStorage.setItem('theme', theme);
     }, [theme]);
 
+    useEffect(() => {
+        if (overlay && circleRef.current) {
+            setAnimating(true);
+
+            // Force reflow
+            void circleRef.current.offsetWidth;
+
+            // Start Expanding
+            requestAnimationFrame(() => {
+                if (circleRef.current) {
+                    circleRef.current.style.clipPath = `circle(150% at ${overlay.x}px ${overlay.y}px)`;
+                }
+            });
+
+            // Wait for transition to end before unmounting overlay
+            const timer = setTimeout(() => {
+                setTheme(overlay.newTheme);
+                // Slight delay to hide the circle gracefully
+                setTimeout(() => {
+                    setOverlay(null);
+                    setAnimating(false);
+                }, 50);
+            }, 500); // Matches the CSS duration
+
+            return () => clearTimeout(timer);
+        }
+    }, [overlay]);
+
     const toggleTheme = (e: React.MouseEvent) => {
-        if (overlay) return; // Prevent spam clicking
+        if (animating) return;
 
         const x = e.clientX;
         const y = e.clientY;
@@ -44,36 +73,27 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
-            <AnimatePresence>
-                {overlay && (
-                    <motion.div
-                        initial={{
-                            clipPath: `circle(0px at ${overlay.x}px ${overlay.y}px)`,
-                            opacity: 1
-                        }}
-                        animate={{
-                            clipPath: `circle(150% at ${overlay.x}px ${overlay.y}px)`,
-                            opacity: 1
-                        }}
-                        exit={{
-                            opacity: 0,
-                            transition: { duration: 0.3, ease: 'easeOut' }
-                        }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        onAnimationComplete={() => {
-                            setTheme(overlay.newTheme);
-                            setOverlay(null);
-                        }}
+            {overlay && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 99999,
+                        pointerEvents: 'none',
+                    }}
+                >
+                    <div
+                        ref={circleRef}
                         style={{
-                            position: 'fixed',
-                            inset: 0,
+                            width: '100%',
+                            height: '100%',
                             backgroundColor: overlay.newTheme === 'dark' ? '#121212' : '#F5F5F5',
-                            zIndex: 99999,
-                            pointerEvents: 'none',
+                            clipPath: `circle(0px at ${overlay.x}px ${overlay.y}px)`,
+                            transition: 'clip-path 500ms ease-in-out',
                         }}
                     />
-                )}
-            </AnimatePresence>
+                </div>
+            )}
         </ThemeContext.Provider>
     );
 };
