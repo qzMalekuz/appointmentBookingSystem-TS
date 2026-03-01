@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import authRoutes from './routes/auth';
+import cors from 'cors';
 import serviceRoutes from './routes/service';
 import appointmentRoutes from './routes/appointment';
 import providerRoutes from './routes/provider';
@@ -10,6 +11,7 @@ const app = express();
 const port = Number(process.env.PORT);
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/auth', authRoutes);
 app.use('/services', serviceRoutes);
