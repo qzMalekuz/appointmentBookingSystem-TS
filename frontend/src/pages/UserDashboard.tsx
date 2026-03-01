@@ -26,7 +26,7 @@ const UserDashboard = () => {
             const url = type === 'ALL' ? '/services' : `/services?type=${type}`;
             const { data } = await api.get(url);
             setServices(data);
-        } catch (err) {
+        } catch {
             setError('Failed to load services');
         } finally {
             setLoading(false);
@@ -91,7 +91,7 @@ const UserDashboard = () => {
 
                                 <Link
                                     to={`/services/${service.id}`}
-                                    className="w-full text-center py-2 px-4 bg-primary text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+                                    className="w-full text-center py-2 px-4 bg-primary text-button-text font-medium rounded-lg hover:opacity-90 transition-opacity"
                                 >
                                     View Slots
                                 </Link>

@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { ProtectedRoute, RoleBasedRoute } from './routes/ProtectedRoutes';
+import { AuthProvider } from './context/AuthContext.tsx';
+import { ThemeProvider } from './context/ThemeContext.tsx';
+import { ProtectedRoute, RoleBasedRoute } from './routes/ProtectedRoutes.tsx';
 
 // Pages
-import Login from './pages/Login';
-import Register from './pages/Register';
-import UserDashboard from './pages/UserDashboard';
-import ViewSlots from './pages/ViewSlots';
-import MyAppointments from './pages/MyAppointments';
-import ProviderDashboard from './pages/provider/ProviderDashboard';
-import SetAvailability from './pages/provider/SetAvailability';
-import DailySchedule from './pages/provider/DailySchedule';
-import Layout from './components/Layout';
+import Login from './pages/Login.tsx';
+import Register from './pages/Register.tsx';
+import UserDashboard from './pages/UserDashboard.tsx';
+import ViewSlots from './pages/ViewSlots.tsx';
+import MyAppointments from './pages/MyAppointments.tsx';
+import ProviderDashboard from './pages/provider/ProviderDashboard.tsx';
+import SetAvailability from './pages/provider/SetAvailability.tsx';
+import DailySchedule from './pages/provider/DailySchedule.tsx';
+import Layout from './components/Layout.tsx';
 
 function App() {
   return (

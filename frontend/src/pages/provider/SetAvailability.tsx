@@ -41,8 +41,9 @@ const SetAvailability = () => {
                 endTime
             });
             setSuccess('Availability added successfully!');
-        } catch (err: any) {
-            setError(err.response?.data?.error || 'Failed to add availability.');
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setError((err as any).response?.data?.error || 'Failed to add availability.');
         } finally {
             setLoading(false);
         }

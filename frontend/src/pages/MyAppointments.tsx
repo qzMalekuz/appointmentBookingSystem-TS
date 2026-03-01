@@ -22,7 +22,7 @@ const MyAppointments = () => {
             try {
                 const { data } = await api.get('/appointments/me');
                 setAppointments(data);
-            } catch (err) {
+            } catch {
                 setError('Failed to load appointments.');
             } finally {
                 setLoading(false);

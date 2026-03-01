@@ -58,8 +58,9 @@ const ProviderDashboard = () => {
             setName('');
             setDuration('30');
             fetchMyServices(); // Refresh list
-        } catch (err: any) {
-            setSubmitError(err.response?.data?.error || 'Failed to create service.');
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setSubmitError((err as any).response?.data?.error || 'Failed to create service.');
         } finally {
             setIsSubmitting(false);
         }

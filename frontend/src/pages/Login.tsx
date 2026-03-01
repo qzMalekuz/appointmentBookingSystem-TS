@@ -35,8 +35,9 @@ const Login = () => {
             } else {
                 setError('Invalid token received.');
             }
-        } catch (err: any) {
-            setError(err.response?.data?.error || 'Failed to login');
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setError((err as any).response?.data?.error || 'Failed to login');
         } finally {
             setLoading(false);
         }

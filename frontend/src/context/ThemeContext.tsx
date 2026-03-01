@@ -34,6 +34,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     useEffect(() => {
         if (overlay && circleRef.current) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setAnimating(true);
 
             // Force reflow
@@ -98,6 +99,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) throw new Error('useTheme must be used within ThemeProvider');

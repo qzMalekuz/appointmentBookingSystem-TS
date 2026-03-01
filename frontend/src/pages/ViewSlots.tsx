@@ -31,7 +31,7 @@ const ViewSlots = () => {
         try {
             const { data } = await api.get(`/services/${id}/slots?date=${selectedDate}`);
             setSlots(data.slots || []);
-        } catch (err) {
+        } catch {
             setError('Failed to fetch available slots.');
         } finally {
             setLoading(false);
@@ -40,6 +40,7 @@ const ViewSlots = () => {
 
     useEffect(() => {
         fetchSlots(date);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date, id]);
 
     const handleBook = async (slotId: string) => {
@@ -51,8 +52,9 @@ const ViewSlots = () => {
             await api.post('/appointments', { slotId });
             setSuccess('Appointment booked successfully!');
             fetchSlots(date); // Refresh slots
-        } catch (err: any) {
-            setError(err.response?.data?.error || 'Failed to book slot.');
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setError((err as any).response?.data?.error || 'Failed to book slot.');
         } finally {
             setBookingSlot(null);
         }

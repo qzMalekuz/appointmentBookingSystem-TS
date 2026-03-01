@@ -32,7 +32,7 @@ const DailySchedule = () => {
         try {
             const { data } = await api.get(`/providers/me/schedule?date=${selectedDate}`);
             setScheduleData(data.services || []);
-        } catch (err) {
+        } catch {
             setError('Failed to fetch daily schedule.');
         } finally {
             setLoading(false);

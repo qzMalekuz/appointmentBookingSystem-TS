@@ -23,8 +23,9 @@ const Register = () => {
         try {
             await api.post('/auth/register', { name, email, password, role });
             navigate('/login');
-        } catch (err: any) {
-            setError(err.response?.data?.error || 'Failed to register');
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            setError((err as any).response?.data?.error || 'Failed to register');
         } finally {
             setLoading(false);
         }
@@ -82,7 +83,7 @@ const Register = () => {
                                 <select
                                     className="px-3 py-2 bg-surface text-text-main border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
                                     value={role}
-                                    onChange={(e) => setRole(e.target.value as any)}
+                                    onChange={(e) => setRole(e.target.value as 'USER' | 'SERVICE_PROVIDER')}
                                 >
                                     <option value="USER">Customer</option>
                                     <option value="SERVICE_PROVIDER">Service Provider</option>
