@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import { Card, CardBody } from '../components/Card';
-import { Clock, User as UserIcon } from 'lucide-react';
+import { Clock, User as UserIcon, ChevronDown } from 'lucide-react';
 
 interface Service {
     id: string;
@@ -41,29 +41,33 @@ const UserDashboard = () => {
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-text-main">Available Services</h1>
+                    <h1 className="text-2xl font-bold text-text-primary">Available Services</h1>
                     <p className="text-text-muted text-sm mt-1">Book your next appointment</p>
                 </div>
 
-                <select
-                    value={filterType}
-                    onChange={(e) => setFilterType(e.target.value)}
-                    className="px-4 py-2 border border-border-subtle rounded-lg text-sm bg-surface shadow-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-text-main"
-                >
-                    {SERVICE_TYPES.map(type => (
-                        <option key={type} value={type}>{type}</option>
-                    ))}
-                </select>
+                {/* Filter select — perfectly aligned with custom chevron */}
+                <div className="relative inline-flex items-center">
+                    <select
+                        value={filterType}
+                        onChange={(e) => setFilterType(e.target.value)}
+                        className="appearance-none pl-4 pr-10 py-2.5 border border-border rounded-lg text-sm bg-bg-card text-text-primary outline-none focus:ring-2 focus:border-accent cursor-pointer font-medium min-w-[160px]"
+                    >
+                        {SERVICE_TYPES.map(type => (
+                            <option key={type} value={type}>{type}</option>
+                        ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 w-4 h-4 text-text-muted" />
+                </div>
             </div>
 
             {error ? (
-                <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100">{error}</div>
+                <div className="p-4 bg-error/10 text-error rounded-xl border border-error/20">{error}</div>
             ) : loading ? (
                 <div className="flex justify-center p-12">
-                    <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
+                    <div className="w-8 h-8 rounded-full border-4 border-bg-hover border-t-accent animate-spin" />
                 </div>
             ) : services.length === 0 ? (
-                <div className="text-center p-12 bg-surface rounded-xl border border-border-subtle border-dashed">
+                <div className="text-center p-12 bg-bg-card rounded-xl border border-border border-dashed">
                     <p className="text-text-muted">No services found for this category.</p>
                 </div>
             ) : (
@@ -72,10 +76,10 @@ const UserDashboard = () => {
                         <Card key={service.id} className="hover:shadow-md transition-shadow">
                             <CardBody className="flex flex-col h-full">
                                 <div className="mb-4">
-                                    <span className="inline-block px-2.5 py-1 bg-background text-text-muted text-xs font-semibold rounded-md mb-3">
+                                    <span className="inline-block px-2.5 py-1 bg-bg-hover text-text-muted text-xs font-semibold tracking-wide uppercase rounded-md mb-3">
                                         {service.type}
                                     </span>
-                                    <h3 className="text-lg font-bold text-text-main leading-tight mb-1">{service.name}</h3>
+                                    <h3 className="text-lg font-bold text-text-primary leading-tight mb-1">{service.name}</h3>
                                 </div>
 
                                 <div className="space-y-2 mt-auto text-sm text-text-muted mb-6">
@@ -91,7 +95,7 @@ const UserDashboard = () => {
 
                                 <Link
                                     to={`/services/${service.id}`}
-                                    className="w-full text-center py-2 px-4 bg-primary text-button-text font-medium rounded-lg hover:opacity-90 transition-opacity"
+                                    className="w-full text-center py-2.5 px-4 bg-accent text-bg-primary font-semibold rounded-lg hover:bg-accent-hover transition-colors"
                                 >
                                     View Slots
                                 </Link>

@@ -15,9 +15,9 @@ const Button: React.FC<ButtonProps> = ({
     const baseStyles = "px-4 py-2 font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2";
 
     const variants = {
-        primary: "bg-primary text-button-text hover:opacity-90 shadow-sm border border-transparent",
-        secondary: "bg-surface text-text-main border border-border-subtle hover:bg-background shadow-sm",
-        danger: "bg-red-50 text-red-600 hover:bg-red-100 border border-red-100 dark:bg-red-500/10 dark:text-red-400 dark:hover:bg-red-500/20 dark:border-red-500/20 shadow-sm"
+        primary: "bg-accent text-bg-primary hover:bg-accent-hover shadow-sm border border-transparent",
+        secondary: "bg-bg-card text-text-primary border border-border hover:bg-bg-hover shadow-sm",
+        danger: "bg-red-500/10 text-red-500 hover:bg-red-500/20 border border-red-500/20 shadow-sm",
     };
 
     const width = fullWidth ? "w-full" : "";
