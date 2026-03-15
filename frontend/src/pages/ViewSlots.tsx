@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import api from '../api/axios';
 import { Card, CardBody, CardHeader } from '../components/Card';
 import Button from '../components/Button';
@@ -61,7 +62,12 @@ const ViewSlots = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto space-y-6">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="max-w-2xl mx-auto space-y-6 transition-all duration-300 ease-out"
+        >
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-text-main">Book Appointment</h1>
@@ -113,10 +119,13 @@ const ViewSlots = () => {
                     ) : (
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             {slots.map(slot => (
-                                <button
+                                <motion.button
                                     key={slot.slotId}
                                     disabled={bookingSlot === slot.slotId}
                                     onClick={() => handleBook(slot.slotId)}
+                                    whileHover={bookingSlot === slot.slotId ? undefined : { scale: 1.02, y: -1 }}
+                                    whileTap={bookingSlot === slot.slotId ? undefined : { scale: 0.98 }}
+                                    transition={{ duration: 0.18, ease: 'easeOut' }}
                                     className="px-4 py-3 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-500 hover:shadow-sm transition-colors duration-300 focus:ring-2 focus:ring-neutral-400 outline-none group text-left relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <div className="text-text-main font-semibold">{slot.startTime}</div>
@@ -127,13 +136,13 @@ const ViewSlots = () => {
                                             <div className="w-4 h-4 rounded-full border-2 border-neutral-300 dark:border-neutral-700 border-t-neutral-600 dark:border-t-neutral-300 animate-spin"></div>
                                         </div>
                                     )}
-                                </button>
+                                </motion.button>
                             ))}
                         </div>
                     )}
                 </CardBody>
             </Card>
-        </div>
+        </motion.div>
     );
 };
 

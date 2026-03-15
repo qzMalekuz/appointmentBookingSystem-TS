@@ -67,7 +67,7 @@ export default function Features() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.35, delay: index * 0.06 }}
                 whileHover={{ y: -4 }}
                 className="group rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition dark:border-neutral-800 dark:bg-neutral-900"

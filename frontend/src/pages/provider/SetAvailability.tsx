@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import api from '../../api/axios';
 import { Card, CardBody } from '../../components/Card';
 import Button from '../../components/Button';
@@ -50,7 +51,12 @@ const SetAvailability = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto space-y-6">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="max-w-xl mx-auto space-y-6 transition-all duration-300 ease-out"
+        >
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-text-main">Set Availability</h1>
@@ -114,7 +120,7 @@ const SetAvailability = () => {
                     </form>
                 </CardBody>
             </Card>
-        </div>
+        </motion.div>
     );
 };
 

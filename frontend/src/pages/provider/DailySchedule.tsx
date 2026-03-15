@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../../api/axios';
+import { motion } from 'framer-motion';
 
 import { Calendar, Clock, UserRound } from 'lucide-react';
 
@@ -47,7 +48,12 @@ const DailySchedule = () => {
     const totalAppointments = scheduleData.reduce((acc, curr) => acc + curr.appointments.length, 0);
 
     return (
-        <div className="space-y-6">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="space-y-6 transition-all duration-300 ease-out"
+        >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-text-main">Daily Schedule</h1>
@@ -128,7 +134,7 @@ const DailySchedule = () => {
                     ))}
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

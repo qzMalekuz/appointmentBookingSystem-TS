@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import api from '../../api/axios';
 import { Card, CardBody } from '../../components/Card';
 import Button from '../../components/Button';
@@ -67,7 +68,12 @@ const ProviderDashboard = () => {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-300 ease-out"
+        >
             {/* Create Service Section */}
             <div className="lg:col-span-1 border-r-0 lg:border-r border-border-subtle lg:pr-8">
                 <div className="mb-6">
@@ -147,8 +153,17 @@ const ProviderDashboard = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {services.map(service => (
-                            <Card key={service.serviceId} className="hover:shadow-sm transition-shadow">
+                        {services.map((service, index) => (
+                            <motion.div
+                                key={service.serviceId}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-100px' }}
+                                transition={{ duration: 0.35, delay: index * 0.05 }}
+                                whileHover={{ y: -4 }}
+                                className="transition-transform duration-200"
+                            >
+                            <Card className="hover:shadow-lg hover:border-neutral-300 dark:hover:border-neutral-600 transition-all duration-300 ease-out">
                                 <CardBody>
                                     <h3 className="text-lg font-bold text-text-main mb-4">{service.serviceName}</h3>
                                     <Link
@@ -160,11 +175,12 @@ const ProviderDashboard = () => {
                                     </Link>
                                 </CardBody>
                             </Card>
+                            </motion.div>
                         ))}
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -35,7 +35,7 @@ export default function HowItWorks() {
                 key={step.title}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.35, delay: index * 0.08 }}
                 className="relative rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
               >

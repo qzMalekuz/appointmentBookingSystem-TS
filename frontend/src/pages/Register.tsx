@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import api from '../api/axios';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -33,7 +34,12 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors duration-300 p-4">
-            <div className="w-full max-w-md">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="w-full max-w-md transition-all duration-300 ease-out"
+            >
                 <div className="flex flex-col items-center mb-8">
                     <BrandWordmark textClassName="text-4xl sm:text-5xl" markClassName="h-12 w-12 sm:h-14 sm:w-14" />
                     <h1 className="mt-4 text-2xl font-semibold text-neutral-900 dark:text-neutral-100 text-center">Create your account</h1>
@@ -101,7 +107,7 @@ const Register = () => {
                         Sign in
                     </Link>
                 </p>
-            </div>
+            </motion.div>
         </div>
     );
 };

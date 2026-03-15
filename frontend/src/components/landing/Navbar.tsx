@@ -25,13 +25,15 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <motion.a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+              whileHover={{ y: -1 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              className="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-all duration-300 ease-out hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800/70 dark:hover:text-neutral-100"
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
@@ -95,7 +97,11 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="rounded-md px-2 py-1.5 text-sm font-medium text-neutral-700 transition-all duration-300 ease-out hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/70"
+                >
                   {link.label}
                 </a>
               ))}

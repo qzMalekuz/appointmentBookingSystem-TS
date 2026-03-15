@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import api from '../api/axios';
 import { Card, CardBody } from '../components/Card';
 import { Clock, User as UserIcon, ChevronDown } from 'lucide-react';
@@ -38,7 +39,12 @@ const UserDashboard = () => {
     }, [filterType]);
 
     return (
-        <div className="space-y-6">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="space-y-6 transition-all duration-300 ease-out"
+        >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-text-primary">Available Services</h1>
@@ -72,8 +78,17 @@ const UserDashboard = () => {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {services.map((service) => (
-                        <Card key={service.id} className="hover:shadow-md transition-shadow">
+                    {services.map((service, index) => (
+                        <motion.div
+                            key={service.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ duration: 0.35, delay: index * 0.04 }}
+                            whileHover={{ y: -4 }}
+                            className="transition-transform duration-200"
+                        >
+                        <Card className="hover:shadow-lg hover:border-neutral-300 dark:hover:border-neutral-600 transition-all duration-300 ease-out">
                             <CardBody className="flex flex-col h-full">
                                 <div className="mb-4">
                                     <span className="inline-block px-2.5 py-1 bg-bg-hover text-text-muted text-xs font-semibold tracking-wide uppercase rounded-md mb-3">
@@ -101,10 +116,11 @@ const UserDashboard = () => {
                                 </Link>
                             </CardBody>
                         </Card>
+                        </motion.div>
                     ))}
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,9 +1,10 @@
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Outlet, Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Button from './Button';
 import { BrandWordmark } from './Brand';
+import { motion } from 'framer-motion';
 
 const Layout = () => {
     const { logout, role } = useAuth();
@@ -27,7 +28,7 @@ const Layout = () => {
     const rootPath = role === 'USER' ? '/dashboard' : '/provider/dashboard';
 
     return (
-        <div className="min-h-screen flex flex-col bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors duration-300">
+        <div className="min-h-screen flex flex-col bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-all duration-300 ease-out">
             <nav className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-10 transition-colors duration-300">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
                     <Link to={rootPath} className="flex items-center gap-2 font-semibold text-lg hover:opacity-80 transition-opacity">
@@ -37,13 +38,19 @@ const Layout = () => {
                     <div className="flex items-center gap-6">
                         <div className="flex gap-4">
                             {navLinks.map((link) => (
-                                <Link
+                                <NavLink
                                     key={link.path}
                                     to={link.path}
-                                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors duration-300"
+                                    className={({ isActive }) =>
+                                        `text-sm px-3 py-1.5 rounded-md transition-all duration-300 ease-out ${
+                                            isActive
+                                                ? 'font-semibold bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100'
+                                                : 'font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800/70'
+                                        }`
+                                    }
                                 >
                                     {link.name}
-                                </Link>
+                                </NavLink>
                             ))}
                         </div>
 
@@ -59,9 +66,14 @@ const Layout = () => {
                 </div>
             </nav>
 
-            <main className="flex-1 w-full max-w-5xl mx-auto p-6">
+            <motion.main
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="flex-1 w-full max-w-5xl mx-auto p-6 transition-all duration-300 ease-out"
+            >
                 <Outlet />
-            </main>
+            </motion.main>
         </div>
     );
 };

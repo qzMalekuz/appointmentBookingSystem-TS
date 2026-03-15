@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../api/axios';
+import { motion } from 'framer-motion';
 
 import { Calendar, Clock } from 'lucide-react';
 
@@ -33,7 +34,12 @@ const MyAppointments = () => {
     }, []);
 
     return (
-        <div className="space-y-6">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="space-y-6 transition-all duration-300 ease-out"
+        >
             <div>
                 <h1 className="text-2xl font-bold text-text-main">My Appointments</h1>
                 <p className="text-text-muted mt-1">Manage all your booked services</p>
@@ -102,7 +108,7 @@ const MyAppointments = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

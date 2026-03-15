@@ -8,7 +8,7 @@ export default function CTA() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.4 }}
           className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-gradient-to-br from-neutral-100 via-neutral-50 to-white px-6 py-12 text-center text-neutral-900 shadow-sm dark:border-neutral-700 dark:from-neutral-800 dark:via-neutral-800 dark:to-neutral-900 dark:text-neutral-100 sm:px-10"
         >
