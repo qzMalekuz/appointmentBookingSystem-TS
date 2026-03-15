@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const cards = [
   {
@@ -11,17 +12,19 @@ const cards = [
     title: 'Provider Dashboard',
     description: 'See upcoming appointments and key booking metrics at a glance.',
     accent: 'from-neutral-200/80 to-neutral-100/80 dark:from-neutral-800 dark:to-neutral-700',
-    image: '/previews/screenshot-4.png',
+    image: '/previews/screenshot-3.png',
   },
   {
     title: 'Slot Selection UI',
     description: 'Smart slot rendering with available windows and instant confirmations.',
     accent: 'from-neutral-200/80 to-neutral-100/80 dark:from-neutral-800 dark:to-neutral-700',
-    image: '/previews/screenshot-3.png',
+    image: '/previews/screenshot-4.png',
   },
 ];
 
 export default function ProductPreview() {
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
   return (
     <section id="product" className="px-5 py-18 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -43,15 +46,22 @@ export default function ProductPreview() {
               <div className={`relative h-48 bg-gradient-to-br ${card.accent} p-2`}>
                 <div className="absolute inset-2 rounded-xl border border-white/35 bg-white/40 backdrop-blur-sm dark:border-neutral-700/70 dark:bg-neutral-900/35" />
                 <div className="relative h-full overflow-hidden rounded-xl border border-neutral-200/80 bg-neutral-100/80 dark:border-neutral-700/80 dark:bg-neutral-900/70">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    onError={(event) => {
-                      event.currentTarget.style.opacity = '0';
-                    }}
-                  />
+                  {failedImages[card.image] ? (
+                    <div className="flex h-full w-full items-center justify-center bg-neutral-100 text-center dark:bg-neutral-800">
+                      <div>
+                        <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{card.title}</p>
+                        <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Add {card.image.replace('/previews/', '')} in `frontend/public/previews`</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                      onError={() => setFailedImages((prev) => ({ ...prev, [card.image]: true }))}
+                    />
+                  )}
                 </div>
               </div>
               <div className="p-5">
