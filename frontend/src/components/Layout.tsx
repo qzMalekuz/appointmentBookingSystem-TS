@@ -1,8 +1,9 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Calendar, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Button from './Button';
+import { BrandWordmark } from './Brand';
 
 const Layout = () => {
     const { logout, role } = useAuth();
@@ -30,10 +31,7 @@ const Layout = () => {
             <nav className="bg-bg-secondary border-b border-border sticky top-0 z-10">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
                     <Link to={rootPath} className="flex items-center gap-2 text-text-primary font-semibold text-lg hover:opacity-80 transition-opacity">
-                        <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                            <Calendar className="w-5 h-5 text-bg-primary" />
-                        </div>
-                        AppointmentLelo.io
+                        <BrandWordmark textClassName="text-lg" markClassName="h-8 w-8 rounded-lg" />
                     </Link>
 
                     <div className="flex items-center gap-6">

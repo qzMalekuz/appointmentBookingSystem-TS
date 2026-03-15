@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BrandWordmark } from '../Brand';
 import { useTheme } from '../../context/ThemeContext';
 
 const navLinks = [
@@ -18,11 +19,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-950/80">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25">
-            A
-          </span>
-          AppointmentLelo.io
+        <Link to="/" className="hover:opacity-90 transition-opacity">
+          <BrandWordmark textClassName="text-[2rem] sm:text-[2.05rem]" markClassName="h-10 w-10 sm:h-11 sm:w-11" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

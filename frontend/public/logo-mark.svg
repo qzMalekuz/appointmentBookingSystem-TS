@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AppointmentLelo mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2c4358" />
+      <stop offset="100%" stop-color="#1f3346" />
+    </linearGradient>
+    <linearGradient id="mark" x1="8" y1="56" x2="56" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2dd4bf" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="12" fill="url(#bg)" />
+  <rect x="7" y="7" width="50" height="50" rx="8" fill="none" stroke="url(#mark)" stroke-width="4.5" />
+  <path d="M18 24h24" fill="none" stroke="url(#mark)" stroke-width="5" stroke-linecap="round" />
+  <path d="M18 24v14" fill="none" stroke="url(#mark)" stroke-width="5" stroke-linecap="round" />
+  <path d="M18 38h10" fill="none" stroke="url(#mark)" stroke-width="5" stroke-linecap="round" />
+  <path d="M25 31l8 8 15-15" fill="none" stroke="url(#mark)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

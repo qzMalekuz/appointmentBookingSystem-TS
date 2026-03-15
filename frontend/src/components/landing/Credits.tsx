@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { Github, Linkedin, MessageSquareText } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { BrandWordmark } from '../Brand';
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/zafarr', icon: Github },
@@ -8,27 +10,39 @@ const socialLinks = [
 ];
 
 export default function Credits() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const bgControls = useAnimation();
+  const isInView = useInView(sectionRef, { amount: 0.12, margin: '0px 0px -12% 0px' });
+
+  useEffect(() => {
+    bgControls.start(
+      isInView
+        ? { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } }
+        : { opacity: 0, y: 22, transition: { duration: 0.35, ease: 'easeInOut' } },
+    );
+  }, [bgControls, isInView]);
+
   return (
-    <section className="relative overflow-hidden border-t border-slate-200 bg-slate-100/70 px-5 py-16 dark:border-slate-800 dark:bg-slate-900/60 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-x-0 bottom-[-55px] text-center">
-        <p className="select-none text-6xl font-semibold tracking-tight text-slate-900/6 sm:text-8xl lg:text-9xl dark:text-white/6">
-          AppointmentLelo.io
-        </p>
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden border-t border-slate-200 bg-slate-100/70 px-5 pb-16 pt-16 dark:border-slate-800 dark:bg-slate-900/60 sm:px-6 lg:px-8"
+    >
+      <motion.div
+        animate={bgControls}
+        initial={{ opacity: 0, y: 20 }}
+        className="pointer-events-none absolute inset-x-0 -bottom-14 z-0 text-center sm:-bottom-16 lg:-bottom-20"
+      >
+        <div className="absolute inset-x-0 bottom-20 mx-auto h-24 w-[68%] rounded-full bg-blue-400/10 blur-[90px] dark:bg-indigo-300/14" />
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.4 }}
-        className="relative mx-auto max-w-7xl"
+        className="relative z-10 mx-auto max-w-7xl"
       >
-        <div className="flex items-center gap-3">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-white">
-            <span className="text-lg font-semibold">A</span>
-          </div>
-          <h3 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">AppointmentLelo.io</h3>
-        </div>
+        <BrandWordmark textClassName="text-4xl sm:text-5xl" markClassName="h-12 w-12 sm:h-14 sm:w-14" />
 
         <p className="mt-5 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
           Open-source slot-based appointment booking platform built for service providers and users.
