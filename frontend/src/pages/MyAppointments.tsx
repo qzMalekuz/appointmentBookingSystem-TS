@@ -40,14 +40,14 @@ const MyAppointments = () => {
             </div>
 
             {error ? (
-                <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100">{error}</div>
+                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700">{error}</div>
             ) : loading ? (
                 <div className="flex justify-center p-12">
-                    <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
+                    <div className="w-8 h-8 rounded-full border-4 border-neutral-300 dark:border-neutral-700 border-t-neutral-600 dark:border-t-neutral-300 animate-spin"></div>
                 </div>
             ) : appointments.length === 0 ? (
                 <div className="text-center p-16 bg-surface rounded-xl border border-border-subtle border-dashed">
-                    <Calendar className="w-12 h-12 text-primary opacity-50 mx-auto mb-4" />
+                    <Calendar className="w-12 h-12 text-neutral-500 opacity-70 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-text-main">No Appointments Yet</h3>
                     <p className="text-text-muted mt-1">Go to the dashboard to book a service.</p>
                 </div>
@@ -84,13 +84,13 @@ const MyAppointments = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             {appt.status === 'BOOKED' ? (
-                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
                                                     CONFIRMED
                                                 </span>
                                             ) : (
-                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-100">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
                                                     CANCELLED
                                                 </span>
                                             )}

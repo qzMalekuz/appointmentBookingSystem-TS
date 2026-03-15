@@ -17,7 +17,7 @@ export default function Navbar() {
   const isDark = theme === 'dark';
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-950/80">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-900/90 transition-colors duration-300">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="hover:opacity-90 transition-opacity">
           <BrandWordmark textClassName="text-[2rem] sm:text-[2.05rem]" markClassName="h-10 w-10 sm:h-11 sm:w-11" />
@@ -28,7 +28,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-600 transition hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+              className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
             >
               {link.label}
             </a>
@@ -38,14 +38,14 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Link
             to="/login"
-            className="inline-flex items-center rounded-xl border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-100 dark:border-blue-500/35 dark:bg-blue-500/12 dark:text-blue-200 dark:hover:bg-blue-500/18"
+            className="inline-flex items-center rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-800 shadow-sm transition hover:bg-neutral-100 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700"
           >
             Login
           </Link>
 
           <Link
             to="/register"
-            className="inline-flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-blue-500 hover:to-indigo-500"
+            className="inline-flex items-center rounded-xl bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 dark:bg-neutral-200 dark:text-neutral-900 dark:hover:bg-neutral-300"
           >
             Get Started
           </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="relative ml-1 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-100 text-slate-600 transition-colors duration-300 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            className="relative ml-1 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-neutral-300 bg-neutral-100 text-neutral-600 transition-colors duration-300 hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -77,7 +77,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 dark:border-slate-700 dark:text-slate-200 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-300 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300 md:hidden"
           aria-label="Toggle navigation"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -91,24 +91,24 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-950 md:hidden"
+            className="overflow-hidden border-t border-neutral-200 bg-white px-5 py-4 dark:border-neutral-800 dark:bg-neutral-900 md:hidden"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <a key={link.label} href={link.href} className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                   {link.label}
                 </a>
               ))}
               <div className="flex items-center gap-3 pt-2">
                 <Link
                   to="/login"
-                  className="inline-flex items-center rounded-xl border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 dark:border-blue-500/35 dark:bg-blue-500/12 dark:text-blue-200"
+                  className="inline-flex items-center rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-800 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="inline-flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white"
+                  className="inline-flex items-center rounded-xl bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white dark:bg-neutral-200 dark:text-neutral-900"
                 >
                   Get Started
                 </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.92 }}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-neutral-100 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
                 >
                   {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 </motion.button>

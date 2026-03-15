@@ -6,12 +6,12 @@ interface BrandMarkProps extends HTMLAttributes<HTMLDivElement> {
 
 export function BrandMark({ className = '', iconClassName = '' }: BrandMarkProps) {
   return (
-    <div className={`relative inline-flex items-center justify-center rounded-xl border border-cyan-400/45 bg-[#1f3346] shadow-[0_8px_28px_rgba(34,211,238,0.20)] ${className}`}>
+    <div className={`relative inline-flex items-center justify-center rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 shadow-sm ${className}`}>
       <svg viewBox="0 0 64 64" aria-hidden="true" className={`h-[70%] w-[70%] ${iconClassName}`}>
         <defs>
           <linearGradient id="brand-grad" x1="8" x2="56" y1="56" y2="8" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stopColor="#2dd4bf" />
-            <stop offset="1" stopColor="#38bdf8" />
+            <stop offset="0" stopColor="#737373" />
+            <stop offset="1" stopColor="#a3a3a3" />
           </linearGradient>
         </defs>
         <rect x="7" y="7" width="50" height="50" rx="8" fill="none" stroke="url(#brand-grad)" strokeWidth="4.5" />
@@ -34,9 +34,9 @@ export function BrandWordmark({ className = '', textClassName = '', markClassNam
   return (
     <div className={`inline-flex items-center gap-3 ${className}`}>
       <BrandMark className={`h-10 w-10 ${markClassName}`} />
-      <span className={`text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 ${textClassName}`}>
+      <span className={`text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 ${textClassName}`}>
         AppointmentLelo
-        <span className="text-sky-400">.io</span>
+        <span>.io</span>
       </span>
     </div>
   );

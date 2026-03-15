@@ -50,7 +50,7 @@ const UserDashboard = () => {
                     <select
                         value={filterType}
                         onChange={(e) => setFilterType(e.target.value)}
-                        className="appearance-none pl-4 pr-10 py-2.5 border border-border rounded-lg text-sm bg-bg-card text-text-primary outline-none focus:ring-2 focus:border-accent cursor-pointer font-medium min-w-[160px]"
+                        className="appearance-none pl-4 pr-10 py-2.5 border border-neutral-300 dark:border-neutral-600 rounded-xl text-sm bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 cursor-pointer font-medium min-w-[160px] transition-colors duration-300"
                     >
                         {SERVICE_TYPES.map(type => (
                             <option key={type} value={type}>{type}</option>
@@ -61,10 +61,10 @@ const UserDashboard = () => {
             </div>
 
             {error ? (
-                <div className="p-4 bg-error/10 text-error rounded-xl border border-error/20">{error}</div>
+                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700">{error}</div>
             ) : loading ? (
                 <div className="flex justify-center p-12">
-                    <div className="w-8 h-8 rounded-full border-4 border-bg-hover border-t-accent animate-spin" />
+                    <div className="w-8 h-8 rounded-full border-4 border-neutral-300 dark:border-neutral-700 border-t-neutral-600 dark:border-t-neutral-300 animate-spin" />
                 </div>
             ) : services.length === 0 ? (
                 <div className="text-center p-12 bg-bg-card rounded-xl border border-border border-dashed">
@@ -95,7 +95,7 @@ const UserDashboard = () => {
 
                                 <Link
                                     to={`/services/${service.id}`}
-                                    className="w-full text-center py-2.5 px-4 bg-accent text-bg-primary font-semibold rounded-lg hover:bg-accent-hover transition-colors"
+                                    className="w-full text-center py-2.5 px-4 bg-neutral-900 text-white dark:bg-neutral-200 dark:text-neutral-900 font-semibold rounded-xl hover:bg-neutral-800 dark:hover:bg-neutral-300 transition-colors duration-300"
                                 >
                                     View Slots
                                 </Link>

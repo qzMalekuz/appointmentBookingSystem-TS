@@ -64,13 +64,13 @@ const SetAvailability = () => {
             <Card>
                 <CardBody>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                        {error && <div className="p-3 bg-red-50 text-red-600 rounded-lg text-sm border border-red-100">{error}</div>}
-                        {success && <div className="p-3 bg-emerald-50 text-emerald-700 rounded-lg text-sm border border-emerald-100">{success}</div>}
+                        {error && <div className="p-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg text-sm border border-neutral-300 dark:border-neutral-700">{error}</div>}
+                        {success && <div className="p-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg text-sm border border-neutral-300 dark:border-neutral-700">{success}</div>}
 
                         <div className="flex flex-col gap-1.5 w-full">
                             <label className="text-sm font-medium text-text-main">Day of the Week</label>
                             <select
-                                className="px-3 py-2 bg-surface text-text-main border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                className="px-3 py-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-600 rounded-xl outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 transition-colors duration-300"
                                 value={dayOfWeek}
                                 onChange={(e) => setDayOfWeek(e.target.value)}
                             >
@@ -97,10 +97,10 @@ const SetAvailability = () => {
                             />
                         </div>
 
-                        <div className="bg-blue-50/50 dark:bg-blue-500/10 p-4 rounded-xl border border-blue-100 dark:border-blue-500/20 mt-2">
+                        <div className="bg-neutral-100/80 dark:bg-neutral-800/70 p-4 rounded-xl border border-neutral-300 dark:border-neutral-700 mt-2 transition-colors duration-300">
                             <div className="flex items-start gap-3">
-                                <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
-                                <div className="text-sm text-blue-800 dark:text-blue-300">
+                                <Clock className="w-5 h-5 text-neutral-600 dark:text-neutral-300 mt-0.5" />
+                                <div className="text-sm text-neutral-700 dark:text-neutral-300">
                                     <span className="font-semibold block mb-1">Time Format Note:</span>
                                     Please use 24-hour HH:MM format (e.g., 09:00 for 9 AM, 14:30 for 2:30 PM).
                                     Ensure start time is before end time.

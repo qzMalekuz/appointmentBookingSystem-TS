@@ -33,14 +33,14 @@ export default function Credits() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100/70 px-5 pb-16 pt-16 dark:border-slate-800 dark:bg-slate-900/60 sm:px-6 lg:px-8"
+      className="relative overflow-hidden border-t border-neutral-200 bg-neutral-100/70 px-5 pb-16 pt-16 dark:border-neutral-800 dark:bg-neutral-900/60 sm:px-6 lg:px-8"
     >
       <motion.div
         animate={bgControls}
         initial={{ opacity: 0, y: 20 }}
         className="pointer-events-none absolute inset-x-0 -bottom-14 z-0 text-center sm:-bottom-16 lg:-bottom-20"
       >
-        <div className="absolute inset-x-0 bottom-20 mx-auto h-24 w-[68%] rounded-full bg-blue-400/10 blur-[90px] dark:bg-indigo-300/14" />
+        <div className="absolute inset-x-0 bottom-20 mx-auto h-24 w-[68%] rounded-full bg-neutral-300/25 blur-[90px] dark:bg-neutral-700/30" />
       </motion.div>
 
       <motion.div
@@ -52,7 +52,7 @@ export default function Credits() {
       >
         <BrandWordmark textClassName="text-4xl sm:text-5xl" markClassName="h-12 w-12 sm:h-14 sm:w-14" />
 
-        <p className="mt-5 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+        <p className="mt-5 max-w-2xl text-lg text-neutral-600 dark:text-neutral-300">
           Open-source slot-based appointment booking platform built for service providers and users.
         </p>
 
@@ -65,7 +65,7 @@ export default function Credits() {
               rel="noreferrer"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.94 }}
-              className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-600 transition hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-white"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-neutral-300 bg-white text-neutral-600 transition hover:text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:text-white"
               aria-label={label}
             >
               <Icon className="h-5 w-5" />
@@ -73,19 +73,19 @@ export default function Credits() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-slate-300/70 pt-9 dark:border-slate-700/70">
-          <p className="text-xl font-medium text-slate-600 dark:text-slate-300">
+        <div className="mt-10 border-t border-neutral-300/70 pt-9 dark:border-neutral-700/70">
+          <p className="text-xl font-medium text-neutral-600 dark:text-neutral-300">
             Built and designed by{' '}
             <a
               href="https://zafarr.xyz"
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-slate-900 underline decoration-sky-400/40 underline-offset-4 transition duration-200 hover:text-slate-700 hover:decoration-sky-400/65 dark:text-white dark:decoration-cyan-300/35 dark:hover:text-slate-200 dark:hover:decoration-cyan-300/60"
+              className="font-semibold text-neutral-900 underline decoration-neutral-400/70 underline-offset-4 transition duration-200 hover:text-neutral-700 hover:decoration-neutral-500 dark:text-white dark:decoration-neutral-500 dark:hover:text-neutral-200 dark:hover:decoration-neutral-400"
             >
               zafarr.
             </a>
           </p>
-          <p className="mt-4 text-base text-slate-500 dark:text-slate-400">© 2026 AppointmentLelo.io — All Rights Reserved</p>
+          <p className="mt-4 text-base text-neutral-500 dark:text-neutral-400">© 2026 AppointmentLelo.io — All Rights Reserved</p>
         </div>
       </motion.div>
     </section>

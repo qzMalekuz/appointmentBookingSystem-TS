@@ -73,20 +73,20 @@ const ViewSlots = () => {
             </div>
 
             {error && (
-                <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100">{error}</div>
+                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700">{error}</div>
             )}
 
             {success && (
-                <div className="p-4 bg-emerald-50 text-emerald-700 rounded-xl border border-emerald-100 flex items-center justify-between">
+                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700 flex items-center justify-between">
                     {success}
-                    <Button variant="secondary" onClick={() => navigate('/appointments')} className="!py-1.5 !px-3 text-sm border-emerald-200">
+                    <Button variant="secondary" onClick={() => navigate('/appointments')} className="!py-1.5 !px-3 text-sm">
                         View My Appointments
                     </Button>
                 </div>
             )}
 
             <Card>
-                <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 px-6 bg-white border-b-gray-100">
+                <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 px-6">
                     <div className="flex items-center gap-3 text-text-main font-medium">
                         <CalendarIcon className="w-5 h-5 text-text-muted" />
                         Select Date
@@ -96,17 +96,17 @@ const ViewSlots = () => {
                         value={date}
                         min={new Date().toISOString().split('T')[0]}
                         onChange={(e) => setDate(e.target.value)}
-                        className="px-4 py-2 bg-surface text-text-main border border-border-subtle rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm font-medium"
+                        className="px-4 py-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-600 rounded-xl outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 text-sm font-medium transition-colors duration-300"
                     />
                 </CardHeader>
-                <CardBody className="p-6 bg-background/30">
+                <CardBody className="p-6 bg-neutral-50/70 dark:bg-neutral-900/40 transition-colors duration-300">
                     {loading ? (
                         <div className="flex justify-center py-8">
-                            <div className="w-8 h-8 rounded-full border-4 border-surface border-t-primary animate-spin"></div>
+                            <div className="w-8 h-8 rounded-full border-4 border-neutral-300 dark:border-neutral-700 border-t-neutral-600 dark:border-t-neutral-300 animate-spin"></div>
                         </div>
                     ) : slots.length === 0 ? (
                         <div className="text-center py-12">
-                            <Clock className="w-12 h-12 text-primary mx-auto mb-3 opacity-50" />
+                            <Clock className="w-12 h-12 text-neutral-500 mx-auto mb-3 opacity-70" />
                             <h3 className="text-lg font-medium text-text-main">No Slots Available</h3>
                             <p className="text-text-muted mt-1 text-sm">Try selecting a different date.</p>
                         </div>
@@ -117,14 +117,14 @@ const ViewSlots = () => {
                                     key={slot.slotId}
                                     disabled={bookingSlot === slot.slotId}
                                     onClick={() => handleBook(slot.slotId)}
-                                    className="px-4 py-3 bg-surface border border-border-subtle rounded-xl hover:border-primary hover:shadow-sm transition-all focus:ring-2 focus:ring-primary/20 outline-none group text-left relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="px-4 py-3 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-500 hover:shadow-sm transition-colors duration-300 focus:ring-2 focus:ring-neutral-400 outline-none group text-left relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <div className="text-text-main font-semibold">{slot.startTime}</div>
                                     <div className="text-xs text-text-muted mt-0.5">to {slot.endTime}</div>
 
                                     {bookingSlot === slot.slotId && (
-                                        <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
-                                            <div className="w-4 h-4 rounded-full border-2 border-surface border-t-primary animate-spin"></div>
+                                        <div className="absolute inset-0 bg-white/90 dark:bg-neutral-900/90 flex items-center justify-center">
+                                            <div className="w-4 h-4 rounded-full border-2 border-neutral-300 dark:border-neutral-700 border-t-neutral-600 dark:border-t-neutral-300 animate-spin"></div>
                                         </div>
                                     )}
                                 </button>
