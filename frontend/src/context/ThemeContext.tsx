@@ -18,11 +18,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     useEffect(() => {
         const root = window.document.documentElement;
-        if (theme === 'light') {
-            root.classList.add('light');
-        } else {
-            root.classList.remove('light');
-        }
+        root.classList.toggle('light', theme === 'light');
+        root.classList.toggle('dark', theme === 'dark');
+        root.style.colorScheme = theme;
         localStorage.setItem('theme', theme);
     }, [theme]);
 

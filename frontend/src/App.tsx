@@ -6,6 +6,7 @@ import { ProtectedRoute, RoleBasedRoute } from './routes/ProtectedRoutes.tsx';
 // Pages
 import Login from './pages/Login.tsx';
 import Register from './pages/Register.tsx';
+import LandingPage from './pages/LandingPage.tsx';
 import UserDashboard from './pages/UserDashboard.tsx';
 import ViewSlots from './pages/ViewSlots.tsx';
 import MyAppointments from './pages/MyAppointments.tsx';
@@ -20,10 +21,10 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-
-            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
 
             <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
               {/* USER Routes */}
