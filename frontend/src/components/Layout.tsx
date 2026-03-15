@@ -27,10 +27,10 @@ const Layout = () => {
     const rootPath = role === 'USER' ? '/dashboard' : '/provider/dashboard';
 
     return (
-        <div className="min-h-screen flex flex-col bg-bg-primary text-text-primary">
-            <nav className="bg-bg-secondary border-b border-border sticky top-0 z-10">
+        <div className="min-h-screen flex flex-col bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors duration-300">
+            <nav className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-10 transition-colors duration-300">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <Link to={rootPath} className="flex items-center gap-2 text-text-primary font-semibold text-lg hover:opacity-80 transition-opacity">
+                    <Link to={rootPath} className="flex items-center gap-2 font-semibold text-lg hover:opacity-80 transition-opacity">
                         <BrandWordmark textClassName="text-lg" markClassName="h-8 w-8 rounded-lg" />
                     </Link>
 
@@ -40,14 +40,14 @@ const Layout = () => {
                                 <Link
                                     key={link.path}
                                     to={link.path}
-                                    className="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
+                                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors duration-300"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="w-px h-6 bg-border" />
+                        <div className="w-px h-6 bg-neutral-300 dark:bg-neutral-700" />
 
                         <ThemeToggle />
 

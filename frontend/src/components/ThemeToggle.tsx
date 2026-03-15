@@ -45,17 +45,7 @@ const ThemeToggle = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '8px',
-                borderRadius: '50%',
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: 'var(--color-bg-hover)',
-                color: 'var(--color-text-muted)',
-            }}
+            className="inline-flex items-center justify-center p-2 rounded-full border border-neutral-300 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 transition-colors duration-300"
         >
             {isDark ? <SunIcon /> : <MoonIcon />}
         </motion.button>

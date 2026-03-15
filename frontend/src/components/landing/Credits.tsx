@@ -5,9 +5,8 @@ import { BrandWordmark } from '../Brand';
 
 function XIcon({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M4 4l16 16" strokeLinecap="round" />
-      <path d="M20 4L4 20" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M18.901 1.153h3.68l-8.04 9.188 9.458 12.506h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.72h2.04L6.486 3.24H4.298z" />
     </svg>
   );
 }

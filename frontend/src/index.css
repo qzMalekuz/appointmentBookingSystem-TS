@@ -1,79 +1,95 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ─── Tailwind v4 token bridge ───────────────────────────────── */
 @theme {
-  --color-bg-primary:     var(--color-bg-primary);
-  --color-bg-secondary:   var(--color-bg-secondary);
-  --color-bg-card:        var(--color-bg-card);
-  --color-bg-input:       var(--color-bg-input);
-  --color-bg-hover:       var(--color-bg-hover);
-  --color-accent:         var(--color-accent);
-  --color-accent-hover:   var(--color-accent-hover);
-  --color-accent-glow:    var(--color-accent-glow);
-  --color-text-primary:   var(--color-text-primary);
-  --color-text-muted:     var(--color-text-muted);
-  --color-text-dim:       var(--color-text-dim);
-  --color-border:         var(--color-border);
-  --color-self-bubble:    var(--color-self-bubble);
-  --color-other-bubble:   var(--color-other-bubble);
-  --color-success:        var(--color-success);
-  --color-error:          var(--color-error);
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-card: var(--color-bg-card);
+  --color-bg-input: var(--color-bg-input);
+  --color-bg-hover: var(--color-bg-hover);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-glow: var(--color-accent-glow);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-dim: var(--color-text-dim);
+  --color-border: var(--color-border);
+  --color-self-bubble: var(--color-self-bubble);
+  --color-other-bubble: var(--color-other-bubble);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+
+  /* Legacy aliases used across pages/components */
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-primary: var(--color-primary);
+  --color-text-main: var(--color-text-main);
+  --color-button-text: var(--color-button-text);
 }
 
-/* ─── Dark palette (default) ─────────────────────────────────── */
 @layer base {
   :root {
-    --color-bg-primary:    #111114;
-    --color-bg-secondary:  #0a0a0c;
-    --color-bg-card:       #18181b;
-    --color-bg-input:      #1c1c20;
-    --color-bg-hover:      #27272a;
-    --color-accent:        #ffffff;
-    --color-accent-hover:  #e4e4e7;
-    --color-accent-glow:   rgba(255,255,255,0.12);
-    --color-text-primary:  #f4f4f5;
-    --color-text-muted:    #a1a1aa;
-    --color-text-dim:      #71717a;
-    --color-border:        #27272a;
-    --color-self-bubble:   #3f3f46;
-    --color-other-bubble:  #1c1c20;
-    --color-success:       #22c55e;
-    --color-error:         #ef4444;
+    --color-bg-primary: #171717;
+    --color-bg-secondary: #1f1f1f;
+    --color-bg-card: #262626;
+    --color-bg-input: #262626;
+    --color-bg-hover: #333333;
+    --color-accent: #e5e5e5;
+    --color-accent-hover: #d4d4d4;
+    --color-accent-glow: rgba(229, 229, 229, 0.1);
+    --color-text-primary: #f5f5f5;
+    --color-text-muted: #a3a3a3;
+    --color-text-dim: #737373;
+    --color-border: #404040;
+    --color-self-bubble: #404040;
+    --color-other-bubble: #262626;
+    --color-success: #a3a3a3;
+    --color-error: #a3a3a3;
+
+    --color-background: #171717;
+    --color-surface: #262626;
+    --color-border-subtle: #404040;
+    --color-primary: #e5e5e5;
+    --color-text-main: #f5f5f5;
+    --color-button-text: #171717;
   }
 
-  /* ─── Light palette ───────────────────────────────────────── */
   :root.light {
-    --color-bg-primary:    #f5f5f7;
-    --color-bg-secondary:  #ffffff;
-    --color-bg-card:       #ffffff;
-    --color-bg-input:      #f4f4f5;
-    --color-bg-hover:      #e4e4e7;
-    --color-accent:        #000000;
-    --color-accent-hover:  #18181b;
-    --color-accent-glow:   rgba(0,0,0,0.08);
-    --color-text-primary:  #09090b;
-    --color-text-muted:    #52525b;
-    --color-text-dim:      #a1a1aa;
-    --color-border:        #e4e4e7;
-    --color-self-bubble:   #e4e4e7;
-    --color-other-bubble:  #f4f4f5;
-    --color-success:       #16a34a;
-    --color-error:         #dc2626;
+    --color-bg-primary: #fafafa;
+    --color-bg-secondary: #ffffff;
+    --color-bg-card: #ffffff;
+    --color-bg-input: #ffffff;
+    --color-bg-hover: #f5f5f5;
+    --color-accent: #171717;
+    --color-accent-hover: #262626;
+    --color-accent-glow: rgba(23, 23, 23, 0.08);
+    --color-text-primary: #171717;
+    --color-text-muted: #525252;
+    --color-text-dim: #737373;
+    --color-border: #e5e5e5;
+    --color-self-bubble: #f5f5f5;
+    --color-other-bubble: #ffffff;
+    --color-success: #737373;
+    --color-error: #737373;
+
+    --color-background: #fafafa;
+    --color-surface: #ffffff;
+    --color-border-subtle: #d4d4d4;
+    --color-primary: #171717;
+    --color-text-main: #171717;
+    --color-button-text: #ffffff;
   }
 
   body {
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
   }
 
-  /* ─── Global smooth theme transition ─────────────────────── */
   *,
   *::before,
   *::after {
-    transition:
-      background-color 0.3s ease-in-out,
-      color 0.3s ease-in-out,
-      border-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   }
 }

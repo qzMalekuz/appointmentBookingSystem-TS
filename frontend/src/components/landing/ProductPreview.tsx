@@ -4,20 +4,20 @@ const cards = [
   {
     title: 'User Booking Page',
     description: 'Fast, guided booking experience with service and slot selection.',
-    accent: 'from-blue-500/30 to-indigo-500/30',
-    bars: ['w-2/3', 'w-5/6', 'w-1/2'],
+    accent: 'from-blue-500/20 to-indigo-500/25',
+    image: '/previews/screenshot-2.png',
   },
   {
     title: 'Provider Dashboard',
     description: 'See upcoming appointments and key booking metrics at a glance.',
-    accent: 'from-indigo-500/30 to-purple-500/30',
-    bars: ['w-3/4', 'w-2/3', 'w-4/6'],
+    accent: 'from-indigo-500/20 to-purple-500/25',
+    image: '/previews/screenshot-4.png',
   },
   {
     title: 'Slot Selection UI',
     description: 'Smart slot rendering with available windows and instant confirmations.',
-    accent: 'from-purple-500/30 to-blue-500/30',
-    bars: ['w-1/2', 'w-5/6', 'w-2/3'],
+    accent: 'from-purple-500/20 to-blue-500/25',
+    image: '/previews/screenshot-3.png',
   },
 ];
 
@@ -40,13 +40,18 @@ export default function ProductPreview() {
               transition={{ duration: 0.35, delay: index * 0.08 }}
               className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
             >
-              <div className={`h-36 bg-gradient-to-br ${card.accent} p-4`}>
-                <div className="h-full rounded-xl border border-white/40 bg-white/55 p-3 backdrop-blur dark:border-slate-700/70 dark:bg-slate-900/45">
-                  <div className="space-y-2">
-                    {card.bars.map((width, barIndex) => (
-                      <div key={barIndex} className={`h-2 rounded-full bg-slate-400/50 dark:bg-slate-500/40 ${width}`} />
-                    ))}
-                  </div>
+              <div className={`relative h-48 bg-gradient-to-br ${card.accent} p-2`}>
+                <div className="absolute inset-2 rounded-xl border border-white/35 bg-white/40 backdrop-blur-sm dark:border-slate-700/70 dark:bg-slate-900/35" />
+                <div className="relative h-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100/80 dark:border-slate-700/80 dark:bg-slate-900/70">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                    onError={(event) => {
+                      event.currentTarget.style.opacity = '0';
+                    }}
+                  />
                 </div>
               </div>
               <div className="p-5">
