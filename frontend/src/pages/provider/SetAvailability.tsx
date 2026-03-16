@@ -57,12 +57,12 @@ const SetAvailability = () => {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="max-w-xl mx-auto space-y-6 transition-all duration-300 ease-out"
         >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-text-main">Set Availability</h1>
                     <p className="text-text-muted mt-1">Define your working hours for this service</p>
                 </div>
-                <Button variant="secondary" onClick={() => navigate('/provider/dashboard')}>
+                <Button variant="secondary" onClick={() => navigate('/provider/dashboard')} className="w-full sm:w-auto">
                     Back
                 </Button>
             </div>
@@ -86,7 +86,7 @@ const SetAvailability = () => {
                             </select>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Input
                                 label="Start Time"
                                 type="time"

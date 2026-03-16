@@ -9,10 +9,12 @@ import providerRoutes from './routes/provider';
 import rateLimit from 'express-rate-limit';
 
 const app = express();
-const port = Number(process.env.PORT);
+const port = Number(process.env.PORT) || 3000;
+const clientOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
 
-app.use(express.json());
-app.use(cors());
+app.disable('x-powered-by');
+app.use(express.json({ limit: '100kb' }));
+app.use(cors({ origin: clientOrigin, credentials: true }));
 
 // Global Rate Limiter
 // 100 requests per 15 minutes per IP
@@ -42,5 +44,5 @@ app.use('/appointments', appointmentRoutes);
 app.use('/providers', providerRoutes);
 
 app.listen(port, () => {
-    console.log(`Listening to Karan Aujla on port ${port}`);
+    console.log(`Server listening on port ${port}`);
 });

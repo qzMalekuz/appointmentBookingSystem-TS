@@ -60,12 +60,12 @@ const DailySchedule = () => {
                     <p className="text-text-muted mt-1">View your bookings for a specific day</p>
                 </div>
 
-                <div className="relative">
+                <div className="relative w-full sm:w-auto">
                     <input
                         type="date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
-                        className="pl-11 pr-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-xl text-sm font-medium bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 shadow-sm outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 transition-colors duration-300"
+                        className="w-full sm:w-auto pl-11 pr-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-xl text-sm font-medium bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 shadow-sm outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 transition-colors duration-300"
                     />
                     <Calendar className="w-5 h-5 text-text-muted opacity-50 absolute left-3.5 top-2.5 pointer-events-none" />
                 </div>

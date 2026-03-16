@@ -64,13 +64,33 @@ const Layout = () => {
                         </Button>
                     </div>
                 </div>
+
+                <div className="md:hidden border-t border-neutral-200 dark:border-neutral-800 px-3 py-2">
+                    <div className="flex gap-2 overflow-x-auto pb-1">
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                className={({ isActive }) =>
+                                    `shrink-0 rounded-md px-3 py-1.5 text-sm transition-all duration-300 ease-out ${
+                                        isActive
+                                            ? 'font-semibold bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100'
+                                            : 'font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800/70'
+                                    }`
+                                }
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                </div>
             </nav>
 
             <motion.main
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="flex-1 w-full max-w-5xl mx-auto p-6 pb-20 sm:pb-8 transition-all duration-300 ease-out"
+                className="flex-1 w-full max-w-5xl mx-auto p-4 sm:p-6 pb-20 sm:pb-8 transition-all duration-300 ease-out"
             >
                 <Outlet />
             </motion.main>

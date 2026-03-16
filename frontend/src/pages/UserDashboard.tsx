@@ -62,7 +62,7 @@ const UserDashboard = () => {
                             <option key={type} value={type}>{type}</option>
                         ))}
                     </select>
-                    <ChevronDown className="pointer-events-none absolute right-3 w-4 h-4 text-text-muted" />
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
                 </div>
             </div>
 

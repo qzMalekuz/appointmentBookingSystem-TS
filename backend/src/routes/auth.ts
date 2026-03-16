@@ -11,6 +11,10 @@ const router = Router();
 
 router.post('/register', async (req: Request, res: Response) => {
     try {
+        if (!jwtSecret) {
+            return res.status(500).json({ error: "ServerMisconfigured" });
+        }
+
         const validation = schemas.SignupSchema.safeParse(req.body);
         if (!validation.success) {
             return res.status(400).json({
@@ -40,14 +44,17 @@ router.post('/register', async (req: Request, res: Response) => {
         }
         console.error(err);
         return res.status(500).json({
-            error: "InternalServerError",
-            details: String(err)
+            error: "InternalServerError"
         });
     }
 });
 
 router.post('/login', async (req: Request, res: Response) => {
     try {
+        if (!jwtSecret) {
+            return res.status(500).json({ error: "ServerMisconfigured" });
+        }
+
         const validation = schemas.LoginSchema.safeParse(req.body);
         if (!validation.success) {
             return res.status(400).json({

@@ -68,12 +68,12 @@ const ViewSlots = () => {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="max-w-2xl mx-auto space-y-6 transition-all duration-300 ease-out"
         >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-text-main">Book Appointment</h1>
                     <p className="text-text-muted mt-1">Select a date and time slot</p>
                 </div>
-                <Button variant="secondary" onClick={() => navigate('/dashboard')}>
+                <Button variant="secondary" onClick={() => navigate('/dashboard')} className="w-full sm:w-auto">
                     Back
                 </Button>
             </div>
@@ -102,7 +102,7 @@ const ViewSlots = () => {
                         value={date}
                         min={new Date().toISOString().split('T')[0]}
                         onChange={(e) => setDate(e.target.value)}
-                        className="px-4 py-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-600 rounded-xl outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 text-sm font-medium transition-colors duration-300"
+                        className="w-full sm:w-auto px-4 py-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-600 rounded-xl outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 text-sm font-medium transition-colors duration-300"
                     />
                 </CardHeader>
                 <CardBody className="p-6 bg-neutral-50/70 dark:bg-neutral-900/40 transition-colors duration-300">
@@ -117,7 +117,7 @@ const ViewSlots = () => {
                             <p className="text-text-muted mt-1 text-sm">Try selecting a different date.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-3 gap-3">
                             {slots.map(slot => (
                                 <motion.button
                                     key={slot.slotId}

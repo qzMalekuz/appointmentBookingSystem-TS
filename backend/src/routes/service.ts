@@ -2,7 +2,6 @@ import { Router, type Request, type Response } from "express";
 import { schemas } from "../validator/schema";
 import { prisma } from "../lib/prisma";
 import { authMiddleware } from "../middlewares/authMiddleware";
-import { string } from "zod";
 
 const router = Router();
 
