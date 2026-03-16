@@ -90,7 +90,7 @@ const DailySchedule = () => {
                             <h2 className="text-lg font-bold text-text-main mb-4 px-1">{service.serviceName}</h2>
                             <div className="bg-surface rounded-xl shadow-sm border border-border-subtle overflow-hidden">
                                 <div className="overflow-x-auto">
-                                    <table className="w-full text-left text-sm whitespace-nowrap">
+                                    <table className="w-full text-left text-sm whitespace-nowrap responsive-table">
                                         <thead className="bg-background/50 text-text-muted font-medium border-b border-border-subtle text-xs uppercase tracking-wider">
                                             <tr>
                                                 <th className="px-6 py-4">Client</th>
@@ -101,7 +101,7 @@ const DailySchedule = () => {
                                         <tbody className="divide-y divide-border-subtle">
                                             {service.appointments.map((appt) => (
                                                 <tr key={appt.appointmentId} className="hover:bg-background/50 transition-colors">
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4" data-label="Client">
                                                         <div className="flex items-center gap-3">
                                                             <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center">
                                                                 <UserRound className="w-4 h-4 opacity-50" />
@@ -109,10 +109,10 @@ const DailySchedule = () => {
                                                             <span className="font-semibold text-text-main">{appt.userName}</span>
                                                         </div>
                                                     </td>
-                                                    <td className="px-6 py-4 text-text-muted font-medium tracking-wide">
+                                                    <td className="px-6 py-4 text-text-muted font-medium tracking-wide" data-label="Time">
                                                         {appt.startTime} - {appt.endTime}
                                                     </td>
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4" data-label="Status">
                                                         {appt.status === 'BOOKED' ? (
                                                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700">
                                                                 <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>

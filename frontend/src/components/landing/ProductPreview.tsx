@@ -4,17 +4,20 @@ const cards = [
   {
     title: 'User Booking Page',
     description: 'Fast, guided booking experience with service and slot selection.',
-    image: '/previews/screenshot-2.svg',
+    darkImage: '/previews/screenshot-2.svg',
+    lightImage: '/previews/screenshot-2-light.svg',
   },
   {
     title: 'Provider Dashboard',
     description: 'See upcoming appointments and key booking metrics at a glance.',
-    image: '/previews/screenshot-3.svg',
+    darkImage: '/previews/screenshot-3.svg',
+    lightImage: '/previews/screenshot-3-light.svg',
   },
   {
     title: 'Slot Selection UI',
     description: 'Smart slot rendering with available windows and instant confirmations.',
-    image: '/previews/screenshot-4.svg',
+    darkImage: '/previews/screenshot-4.svg',
+    lightImage: '/previews/screenshot-4-light.svg',
   },
 ];
 
@@ -43,10 +46,16 @@ export default function ProductPreview() {
             >
               <div className="aspect-[16/10] overflow-hidden border-b border-neutral-200 bg-neutral-100 transition-colors duration-300 dark:border-neutral-700 dark:bg-neutral-950">
                 <img
-                  src={card.image}
+                  src={card.lightImage}
                   alt={card.title}
                   loading="lazy"
-                  className="h-full w-full object-cover object-top transition-all duration-300 grayscale brightness-125 contrast-90 dark:grayscale-0 dark:brightness-100 dark:contrast-100"
+                  className="h-full w-full object-cover object-top transition-all duration-300 dark:hidden"
+                />
+                <img
+                  src={card.darkImage}
+                  alt={card.title}
+                  loading="lazy"
+                  className="hidden h-full w-full object-cover object-top transition-all duration-300 dark:block"
                 />
               </div>
 

@@ -52,11 +52,11 @@ const UserDashboard = () => {
                 </div>
 
                 {/* Filter select — perfectly aligned with custom chevron */}
-                <div className="relative inline-flex items-center">
+                <div className="relative w-full sm:w-auto">
                     <select
                         value={filterType}
                         onChange={(e) => setFilterType(e.target.value)}
-                        className="appearance-none pl-4 pr-10 py-2.5 border border-neutral-300 dark:border-neutral-600 rounded-xl text-sm bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 cursor-pointer font-medium min-w-[160px] transition-colors duration-300"
+                        className="appearance-none w-full sm:w-[160px] pl-4 pr-10 py-2.5 border border-neutral-300 dark:border-neutral-600 rounded-xl text-sm bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 outline-none focus:ring-2 focus:ring-neutral-400 focus:border-neutral-400 cursor-pointer font-medium transition-colors duration-300"
                     >
                         {SERVICE_TYPES.map(type => (
                             <option key={type} value={type}>{type}</option>

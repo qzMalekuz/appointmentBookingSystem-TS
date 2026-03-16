@@ -70,7 +70,7 @@ const Layout = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="flex-1 w-full max-w-5xl mx-auto p-6 transition-all duration-300 ease-out"
+                className="flex-1 w-full max-w-5xl mx-auto p-6 pb-20 sm:pb-8 transition-all duration-300 ease-out"
             >
                 <Outlet />
             </motion.main>

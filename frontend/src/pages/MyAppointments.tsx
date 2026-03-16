@@ -60,7 +60,7 @@ const MyAppointments = () => {
             ) : (
                 <div className="bg-surface rounded-xl shadow-sm border border-border-subtle overflow-hidden">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm whitespace-nowrap">
+                        <table className="w-full text-left text-sm whitespace-nowrap responsive-table">
                             <thead className="bg-background/50 text-text-muted font-medium border-b border-border-subtle text-xs uppercase tracking-wider">
                                 <tr>
                                     <th className="px-6 py-4">Service</th>
@@ -72,23 +72,23 @@ const MyAppointments = () => {
                             <tbody className="divide-y divide-border-subtle">
                                 {appointments.map((appt, idx) => (
                                     <tr key={idx} className="hover:bg-background/50 transition-colors">
-                                        <td className="px-6 py-4">
+                                        <td className="px-6 py-4" data-label="Service">
                                             <div className="font-semibold text-text-main">{appt.serviceName}</div>
                                             <div className="text-text-muted text-xs mt-0.5">{appt.type}</div>
                                         </td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-6 py-4" data-label="Date">
                                             <div className="flex items-center gap-2 text-text-main font-medium">
                                                 <Calendar className="w-4 h-4 opacity-50" />
                                                 {appt.date}
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-text-muted">
+                                        <td className="px-6 py-4 text-text-muted" data-label="Time">
                                             <div className="flex items-center gap-2">
                                                 <Clock className="w-4 h-4 opacity-50" />
                                                 {appt.startTime} - {appt.endTime}
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-6 py-4" data-label="Status">
                                             {appt.status === 'BOOKED' ? (
                                                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700">
                                                     <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>

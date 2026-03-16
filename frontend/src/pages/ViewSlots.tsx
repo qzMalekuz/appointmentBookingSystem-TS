@@ -83,9 +83,9 @@ const ViewSlots = () => {
             )}
 
             {success && (
-                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700 flex items-center justify-between">
-                    {success}
-                    <Button variant="secondary" onClick={() => navigate('/appointments')} className="!py-1.5 !px-3 text-sm">
+                <div className="p-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl border border-neutral-300 dark:border-neutral-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <span>{success}</span>
+                    <Button variant="secondary" onClick={() => navigate('/appointments')} className="!py-1.5 !px-3 text-sm w-full sm:w-auto">
                         View My Appointments
                     </Button>
                 </div>
