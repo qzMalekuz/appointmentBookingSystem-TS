@@ -21,6 +21,14 @@ It includes a modern SaaS landing page, dark/light theme support, responsive lay
 
 ---
 
+## Preview/Demo
+
+<p align="center">
+  <video src="./docs/appointment-screen-recording.mp4" width="100%" controls autoplay muted loop></video>
+</p>
+
+---
+
 ## Monorepo Structure
 
 ```text
